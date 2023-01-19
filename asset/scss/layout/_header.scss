@@ -1,0 +1,230 @@
+.header{
+    position: absolute;
+     //줄였을때 가로 스크롤 생겨야 하기 때문에 처음엠 absolute, 스크롤 하고 나서 fixed 적용
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    min-width: 1720px;
+     // fix 되어 있는 헤더도 최소값이 있어야함 
+    background: #222;
+    color: #fff;
+
+    .group-flex{
+        display: flex;
+        justify-content: space-between;
+        margin: 25px 0 18px;
+        line-height: 1.5;
+    }
+    .logo{
+        &::before{
+            content:'';
+            display: inline-block;
+            width: 132px;
+            height: 23px;
+            background-image: url(../images/logo.png);
+            background-size: 100%;
+        }
+    }
+    .util-area{
+            
+        .util-list{
+            position: relative;
+            display: flex;
+            gap: 15px;
+            color: #e5e5e5;
+
+            .mypage{
+                //padding을 줘야 after가 영역 안으로 나옴
+                padding-right: 5px;
+
+                &::after{
+                    content:'';
+                    display: inline-block;
+                    width: 7px;
+                    height: 7px;
+                    margin-left: 5px;
+                    border: 1px solid #fff;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                    vertical-align: top;
+                    margin-top: 5px;
+                }
+            }
+
+            .sub-list{
+                display: none;
+                position: absolute;
+                top: 23px; 
+                right: 0;
+                background: #fff;
+                color: #000;
+                padding: 15px 30px 20px;
+                line-height: 34px;
+                border-radius: 5px 5px 30px 5px;
+                z-index: 5;           
+            }
+        }   
+    }
+
+    .logo-slide{
+        &::before{
+            display: none;
+            content:'';
+            position: absolute;
+            top: 25px;
+            width: 132px;
+            height: 23px;
+            background-image: url(../images/logo.png);
+            background-size: 100%;
+        }
+    }
+
+    .logo-slide{
+        &.show{
+            &::before{
+            display: block;
+            }   
+        }
+    }
+
+    .menu-bg{
+        position: absolute;
+        top: 100%;
+        height:0px;
+        background: #fff;
+        left: 0;
+        width: 100%;
+        transition: height 0.5s;
+    }
+
+
+    &.fixed{
+        position: fixed;
+        border-radius: 0 0 50px 0;
+    }
+
+    &.hide{
+        .group-flex{
+            display: none;
+        }
+        .group-nav{
+            margin-left: 175px;
+        }
+    }
+}
+
+
+.group-nav{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0 23px;
+    .nav-list{
+        // position: relative;
+        display: flex;
+        gap: 30px;
+
+
+        .nav-item > a{
+          display: inline-block;
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 20px;
+
+          &:hover{
+            color: #b7a386;
+          }
+
+        }
+
+        .sub-area{
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 75px;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            background: #fff;
+            color: #000;
+            transition: 0.3s;
+            &.on{
+                visibility: visible;
+                opacity: 1;
+                transition: 0.3s 0.1s;
+            }
+
+            .sub-list{
+                padding: 30px 0 40px;
+                display: flex;
+            }
+
+            .sub-item{
+                width: 135px;
+            }
+
+            .sub-item > a{
+                font-size: 16px;
+                font-weight: 600;    
+            }
+
+            .product-list{
+                margin-top: 20px;
+                line-height: 35px;
+                color: #666;
+            }
+        }
+    }
+
+
+    .brand-list{
+        position: absolute;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 50px;
+
+        .brand-item{
+            padding: 30px 0 40px;
+            a{
+            display: block;
+            margin-bottom: 20px;
+            }
+        }
+
+        .sub-brand-list{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .sub-brand-item{
+            width: 170px;
+            height: 65px;
+            background: #f5f5f5;
+            line-height: 65px;
+            text-align: center;
+        }
+    }
+
+
+
+    .link-area{
+        display: flex;
+        gap: 10px;
+        vertical-align: top;
+        margin-top: -10px;
+
+        .link-search img{
+            width: 36px;
+            height: 36px;
+        }
+
+        .link-cart{
+            width: 36px;
+            height: 36px;
+        }
+    }
+}
+
+
