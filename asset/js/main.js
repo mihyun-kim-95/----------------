@@ -439,7 +439,7 @@ const footerBanner = new Swiper(".footer-banner",{
 
 //반복문
 
-fetch('/asset/data/exchangeData.json')
+fetch('https://mihyun-kim-95.github.io/portfolio5-pastelmall/asset/data/exchangeData.json')
 .then((response) => response.json())
 .then((json) => {
     data = json.items;
